@@ -1,0 +1,54 @@
+<!doctype html>
+<html ng-app="9JinApp">
+
+<head>
+  <title>9Jin Shop</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+  <script src="app.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<style>
+.bgnav {
+  background-color:#8bcbc8
+}
+body {
+   padding-top: 70px;
+ }
+.char {
+  font-size: 30px;
+  font-weight: bold;
+padding-left: 150px;
+color: #3c2e3d
+}
+</style>
+
+<body ng-controller="9JinCon">
+
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="navbar navbar-fixed-top bgnav">
+       <div class="char" href="#">บ้านนายจิน (9Jin Shop)<div>
+      </nav>
+    </div>
+</div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8">
+
+      <div class="col-md-4" ng-repeat="book in books">
+        <img src="{{book.img}}"></img>
+        {{book.name}}
+    </div>
+</div>
+
+    <div class="col-md-4">สรุปการสั่งซื้อ</div>
+
+    </div>
+  </div>
+
+
+
+</body>
+
+</html>

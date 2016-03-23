@@ -1,0 +1,23 @@
+{
+  "name": "9jin",
+  "version": "1.0.0",
+  "description": "9jin (midterm)",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.13.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boombk4/9Jin.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/boombk4/9Jin/issues"
+  },
+  "homepage": "https://github.com/boombk4/9Jin#readme"
+}
