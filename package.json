@@ -4,12 +4,13 @@
   "description": "9jin (midterm)",
   "main": "index.js",
   "dependencies": {
-    "express": "^4.13.4"
+    "express": "^4.13.4",
+    "standard": "^6.0.8"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "node test.js",
-    "start": "node index.js"
+    "test": "node test",
+    "start": "node start"
   },
   "repository": {
     "type": "git",
