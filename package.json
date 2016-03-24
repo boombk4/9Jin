@@ -9,8 +9,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "node test",
-    "start": "node start"
+    "test": "node test.js",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
