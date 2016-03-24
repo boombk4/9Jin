@@ -16,11 +16,9 @@ angular.module('9JinApp', [])
       if (!chkCartHave(book)) {
         pushCart(book)
       } else {
-        if (!chkCartHave(book)) {
-          pushCart(book)
-        } else {
-          $scope.cart[(chkCartHave(book).indexOf(book.id))].amount += 1
-        }
+        var position = chkCartHave(book).indexOf(book.id)
+        $scope.cart[position].amount += 1
+        $scope.cart[position].pricesum = priceSum(position)
       }
     }
     var pushCart = function (book) {
@@ -28,7 +26,8 @@ angular.module('9JinApp', [])
         id: book.id,
         name: book.name,
         price: book.price,
-        amount: 1
+        amount: 1,
+        pricesum: 100
       })
     }
 
@@ -43,7 +42,7 @@ angular.module('9JinApp', [])
 
     $scope.calcSumPrice = function () {
       var have = $scope.cart.map(function (obj) { return obj })
-      return have.reduce((sum, have) => sum + (have.price * have.amount), 0)
+      return have.reduce(function (sum, have) { return sum + have.pricesum }, 0)
     }
 
     $scope.calcDiscount = function () {
@@ -51,11 +50,35 @@ angular.module('9JinApp', [])
       var have = $scope.cart.map(function (obj) { return { amount: obj.amount, price: obj.price } })
       while (have.length > 0) {
         var sumPriceBook = have.reduce((sum, have) => sum + have.price, 0)
-        calDis += ((have.length - 1) / 10) * sumPriceBook
+        calDis += (chkDiscount(have.length - 1)) * sumPriceBook
         have = have.map(function (obj) { return { amount: obj.amount - 1, price: obj.price } })
-        have = have.filter((element) => element.amount !== 0)
+        have = have.filter(function (element) { return element.amount !== 0 })
       }
       return calDis
+    }
+
+    var chkDiscount = function (have) {
+      var pro
+      if (have === 6) {
+        pro = 0.6
+      } else if (have === 5) {
+        pro = 0.5
+      } else if (have === 4) {
+        pro = 0.4
+      } else if (have === 3) {
+        pro = 0.3
+      } else if (have === 2) {
+        pro = 0.2
+      } else if (have === 1) {
+        pro = 0.1
+      } else {
+        pro = 0
+      }
+      return pro
+    }
+
+    var priceSum = function (position) {
+      return $scope.cart[position].price * $scope.cart[position].amount
     }
 
     $scope.showSumPrice = function () {
