@@ -1,3 +1,4 @@
+/* global angular */
 angular.module('9JinApp', [])
   .controller('9JinCon', function ($scope) {
     $scope.books = [
@@ -83,5 +84,25 @@ angular.module('9JinApp', [])
 
     $scope.showSumPrice = function () {
       return $scope.calcSumPrice() - $scope.calcDiscount()
+    }
+
+    $scope.totalAmount = function () {
+      var have = $scope.cart.map(function (obj) { return obj })
+      return have.reduce(function (sum, have) { return sum + have.amount }, 0)
+    }
+    $scope.delCart = function (index) {
+      $scope.cart.splice(index, 1)
+    }
+
+    $scope.plusAmount = function (index) {
+      $scope.cart[index].amount += 1
+      $scope.cart[index].pricesum += $scope.cart[index].price
+    }
+
+    $scope.minusAmount = function (index) {
+      if ($scope.cart[index].amount !== 1) {
+        $scope.cart[index].amount -= 1
+        $scope.cart[index].pricesum -= $scope.cart[index].price
+      }
     }
   })
