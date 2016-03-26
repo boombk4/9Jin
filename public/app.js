@@ -2,13 +2,13 @@
 angular.module('9JinApp', [])
   .controller('9JinCon', function ($scope) {
     $scope.books = [
-      { id: 1, name: 'Book1', price: 100, img: 'images/1.jpg' },
-      { id: 2, name: 'Book2', price: 100, img: 'images/2.jpg' },
-      { id: 3, name: 'Book3', price: 100, img: 'images/3.jpg' },
-      { id: 4, name: 'Book4', price: 100, img: 'images/4.jpg' },
-      { id: 5, name: 'Book5', price: 100, img: 'images/5.jpg' },
-      { id: 6, name: 'Book6', price: 100, img: 'images/6.jpg' },
-      { id: 7, name: 'Book7', price: 100, img: 'images/7.jpg' }
+      { id: 1, name: 'แฮรี่พอตเตอร์ กับ ศิลาอาถรรพ์', price: 100, img: 'images/1.jpg' },
+      { id: 2, name: 'แฮรี่พอตเตอร์ กับ ห้องแห่งความลับ', price: 100, img: 'images/2.jpg' },
+      { id: 3, name: 'แฮรี่พอตเตอร์ กับ นักโทษแห่งอัซคาบัน', price: 100, img: 'images/3.jpg' },
+      { id: 4, name: 'แฮรี่พอตเตอร์ กับ ถ้วยอัคนี', price: 100, img: 'images/4.jpg' },
+      { id: 5, name: 'แฮรี่พอตเตอร์ กับ ภาคีนกฟินิกซ์', price: 100, img: 'images/5.jpg' },
+      { id: 6, name: 'แฮรี่พอตเตอร์ กับ เจ้าชายเลือดผสม', price: 100, img: 'images/6.jpg' },
+      { id: 7, name: 'แฮรี่พอตเตอร์ กับ เครื่องรางยมทูต', price: 100, img: 'images/7.jpg' }
     ]
 
     $scope.cart = []

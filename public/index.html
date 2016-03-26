@@ -6,6 +6,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
   <script src="app.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 <style>
   .bgnav {
@@ -17,25 +20,27 @@
   }
 
   .char {
-    font-size: 30px;
+    font-size: 25px;
     font-weight: bold;
-    padding-left: 150px;
+    padding-left: 130px;
     color: #3c2e3d
   }
 
   .cart {
-    padding-right: 150px;
-    padding-top: 5px;
     padding-bottom: 5px;
+    left: 10px;
+    position: fixed;
+    z-index: 2000;
+    top: 5px;
   }
+
   .amount {
-    position:absolute;
+    position: absolute;
     border-radius: 45%;
     background-color: white;
     font-size: 1.10rem;
     padding-left: 7px;
     padding-right: 7px;
-
   }
 </style>
 
@@ -47,50 +52,87 @@
 
         <ul class="nav navbar-nav navbar-left">
           <div class="char" href="#">บ้านนายจิน 9Jin Shop</div>
-
         </ul>
 
-        <ul class="nav navbar-nav navbar-right">
-            <div class="amount">{{totalAmount()}}</div></img>
-          <div class="cart ">
-            <img src="/images/cart.png" width="40px" height="40px">
-          </div>
-
-
-
-
-
-
-        </ul>
 
       </nav>
+
     </div>
   </div>
   </div>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-8">
-        <div class="col-md-4" ng-repeat="book in books">
-          <img src="{{book.img}}"></img>
+      <div class="col-md-10">
+
+        <div class="cart ">
+          <div class="amount">{{totalAmount()}}</div>
+          </img>
+          <button data-toggle="modal" data-target="#myModal"><img src="/images/cart.png" width="40px" height="40px"></button>
+        </div>
+        <div class="col-xs-8 col-md-4" ng-repeat="book in books">
+          <a href="#" class="thumbnail">
+            <img src="{{book.img}}" alt="...">
+          </a>
           {{book.name}}
           <button ng-click="addCart(book)"></button>
         </div>
       </div>
 
-      <div class="col-md-4">สรุปการสั่งซื้อ</div>
-      <div ng-repeat="cart in cart">
-        {{cart.name}} {{cart.amount}} {{cart.pricesum}}
-        <input type="text" ng-model="cart.amount" length="1" disabled>
-        <button ng-click="delCart($index)">Delete</button>
-        <button ng-click="plusAmount($index)">+</button>
-        <button ng-click="minusAmount($index)">-</button>
-      </div>
-      {{calcSumPrice()}}
-      {{calcDiscount()}}
-
 
     </div>
+    <!-- Modal -->
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">รายการสั่งซื้อ</h4>
+          </div>
+          <div class="modal-body">
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>ชื่อหนังสือ</th>
+                  <th>จำนวน</th>
+                  <th>ราคา</th>
+                  <th>ลบ</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="cart in cart">
+                  <td>{{$index+1}}</td>
+                  <td>{{cart.name}}</td>
+                  <td>
+                    <button type="button" class="btn btn-default btn-sm" ng-click="minusAmount($index)">
+                      <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                    </button>
+                    {{cart.amount}}&nbsp;เล่ม
+                    <button type="button" class="btn btn-default btn-sm" ng-click="plusAmount($index)">
+                      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
+                  </td>
+                  <td>{{cart.pricesum}}&nbsp;บาท</td>
+                  <td>
+                    <button type="button"class="btn btn-danger btn-sm" ng-click="delCart($index)">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                  </button>
+                </td>
+
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+
 
 
 
