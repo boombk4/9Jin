@@ -52,11 +52,14 @@ describe('E2E test Harry Potter Book', function () {
       })
     expect(value).to.equal('60.00')
   })
-  it('discount60', function * () {
+  it('discount0', function * () {
     this.timeout(30000)
     var nightmare = Nightmare()
     var value = yield nightmare
       .goto('http://localhost:5000')
+      .click('.btn0')
+      .click('.btn0')
+      .click('.btn0')
       .click('.btn0')
       .click('.btn0')
       .click('.btn0')
@@ -69,6 +72,23 @@ describe('E2E test Harry Potter Book', function () {
         return document.querySelector('.discount').innerHTML
       })
     expect(value).to.equal('0.00')
+  })
+  it('discount80', function * () {
+    this.timeout(30000)
+    var nightmare = Nightmare()
+    var value = yield nightmare
+      .goto('http://localhost:5000')
+      .click('.btn0')
+      .click('.btn0')
+      .click('.btn0')
+      .click('.btn1')
+      .click('.btn1')
+      .click('.btn2')
+
+      .evaluate(function () {
+        return document.querySelector('.discount').innerHTML
+      })
+    expect(value).to.equal('80.00')
   })
   it('sumprice700(no discount)', function * () {
     this.timeout(30000)
