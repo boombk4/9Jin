@@ -54,8 +54,6 @@
         <ul class="nav navbar-nav navbar-left">
           <div class="char" href="#">บ้านนายจิน 9Jin Shop</div>
         </ul>
-
-
       </nav>
 
     </div>
@@ -71,13 +69,11 @@
         </div>
         <div class="col-xs-8 col-md-4" ng-repeat="book in books">
           <img src="{{book.img}}" class="thumbnail"> {{book.name}}
-          <button ng-click="addCart(book)"></button>
+          <br>ราคา:{{book.price | number:2}}บาท </br>
+          <button ng-click="addCart(book)" class="btn btn-success btn-{{$index}}">Buy</button>
         </div>
       </div>
-
-
     </div>
-    <!-- Modal -->
     <!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog">
       <div class="modal-dialog modal-lg">
@@ -125,13 +121,13 @@
           <div class="modal-footer" ng-hide="totalAmount()===0">
             <div class="text-right pull-right col-md-3">
               ราคารวม:
-              <span class="h3 text-muted"><strong> {{calcSumPrice()| number:2}} </strong></span></span>
+              <span class="h3 text-muted"><strong class="calsumprice"> {{calcSumPrice()| number:2}} </strong></span></span>
               บาท
               <br>ส่วนลด:
-              <span class="h3 text-muted"><strong> {{calcDiscount()| number:2}}</strong></span></span>
+              <span class="h3 text-muted"><strong class="discount"> {{calcDiscount()| number:2}}</strong></span></span>
               บาท
               <br>ราคาสุทธิ:
-              <span class="h3 text-muted"><strong> {{showSumPrice()| number:2}}</strong></span></span>
+              <span class="h3 text-muted"><strong class="showsumprice"> {{showSumPrice()| number:2}}</strong></span></span>
               บาท </div>
           </div>
           <div class="modal-body" ng-show="totalAmount()===0">
@@ -145,9 +141,6 @@
       </div>
     </div>
   </div>
-
-
-
 
 </body>
 
