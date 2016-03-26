@@ -65,12 +65,12 @@
         <div class="cart col-md-12">
           <div class="amount">{{totalAmount()}}</div>
           </img>
-          <input type="image" src="/images/cart.png" width="40px" height="40px" data-toggle="modal" data-target="#myModal">
+          <input type="image" src="/images/cart.png" width="40px" height="40px" data-toggle="modal" data-target="#myModal" class="cartamount">
         </div>
         <div class="col-xs-8 col-md-4" ng-repeat="book in books">
           <img src="{{book.img}}" class="thumbnail"> {{book.name}}
           <br>ราคา:{{book.price | number:2}}บาท </br>
-          <button ng-click="addCart(book)" class="btn btn-success btn-{{$index}}">Buy</button>
+          <button ng-click="addCart(book)" class="btn btn-success btn{{$index}}">Buy</button>
         </div>
       </div>
     </div>
@@ -121,13 +121,13 @@
           <div class="modal-footer" ng-hide="totalAmount()===0">
             <div class="text-right pull-right col-md-3">
               ราคารวม:
-              <span class="h3 text-muted"><strong class="calsumprice"> {{calcSumPrice()| number:2}} </strong></span></span>
+              <span class="h3 text-muted"><strong class="calsumprice"> {{calcSumPrice() | number:2}} </strong></span></span>
               บาท
               <br>ส่วนลด:
-              <span class="h3 text-muted"><strong class="discount"> {{calcDiscount()| number:2}}</strong></span></span>
+              <span class="h3 text-muted"><strong class="discount">{{calcDiscount() | number:2}}</strong></span></span>
               บาท
               <br>ราคาสุทธิ:
-              <span class="h3 text-muted"><strong class="showsumprice"> {{showSumPrice()| number:2}}</strong></span></span>
+              <span class="h3 text-muted"><strong class="showsumprice"> {{showSumPrice() | number:2}}</strong></span></span>
               บาท </div>
           </div>
           <div class="modal-body" ng-show="totalAmount()===0">

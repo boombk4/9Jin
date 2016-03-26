@@ -1,0 +1,73 @@
+/* global describe, it */
+require('mocha-generators').install()
+var Nightmare = require('nightmare')
+var expect = require('chai').expect
+
+describe('Test discounts of Harry Potter Book', function () {
+  it('amount7', function * () {
+    this.timeout(15000)
+    var nightmare = Nightmare()
+    var value = yield nightmare
+      .goto('http://localhost:5000')
+      .click('.btn0')
+      .click('.btn1')
+      .click('.btn2')
+      .click('.btn3')
+      .click('.btn4')
+      .click('.btn5')
+      .click('.btn6')
+      .evaluate(function () {
+        return document.querySelector('.amount').innerHTML
+      })
+    expect(value).to.equal('7')
+  })
+  it('discount20', function * () {
+    this.timeout(15000)
+    var nightmare = Nightmare()
+    var value = yield nightmare
+      .goto('http://localhost:5000')
+      .click('.btn0')
+      .click('.btn0')
+      .click('.btn1')
+
+      .evaluate(function () {
+        return document.querySelector('.discount').innerHTML
+      })
+    expect(value).to.equal('20.00')
+  })
+  it('discount60', function * () {
+    this.timeout(15000)
+    var nightmare = Nightmare()
+    var value = yield nightmare
+      .goto('http://localhost:5000')
+      .click('.btn0')
+      .click('.btn0')
+      .click('.btn0')
+      .click('.btn1')
+      .click('.btn1')
+      .click('.btn1')
+
+      .evaluate(function () {
+        return document.querySelector('.discount').innerHTML
+      })
+    expect(value).to.equal('60.00')
+  })
+  it('discount60', function * () {
+    this.timeout(15000)
+    var nightmare = Nightmare()
+    var value = yield nightmare
+      .goto('http://localhost:5000')
+      .click('.btn0')
+      .click('.btn0')
+      .click('.btn0')
+      .click('.btn0')
+      .click('.btn0')
+      .click('.btn0')
+      .click('.btn0')
+
+      .evaluate(function () {
+        return document.querySelector('.discount').innerHTML
+      })
+    expect(value).to.equal('0.00')
+  })
+})
